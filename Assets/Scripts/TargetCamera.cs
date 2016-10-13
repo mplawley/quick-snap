@@ -187,7 +187,6 @@ public class TargetCamera : MonoBehaviour
 			}
 
 			shotRating.text = rating.ToString() + "%";
-			print(playerRatings[shotNum] > passingAccuracy);
 			checkMarkGameObject.SetActive((playerRatings[shotNum] > passingAccuracy)); //The > comparison is used to generate true or false here
 		}
 		else
