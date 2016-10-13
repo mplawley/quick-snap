@@ -31,6 +31,7 @@ public class TargetCamera : MonoBehaviour
 	public int numShots;
 	public Shot[] playerShots;
 	public float[] playerRatings;
+	public GameObject whiteOut;
 
 	[Header("Danger zone")]
 	public bool checkToDeletePlayerPrefs = false; //Danger zone
@@ -119,6 +120,15 @@ public class TargetCamera : MonoBehaviour
 				lastShot = sh;
 				playerShots[shotNum] = sh;
 				playerRatings[shotNum] = acc;
+
+				//Show the shot just taken by the player
+				ShowShot(sh);
+
+				//Return to the current shot after waiting 1 second
+				Invoke("ShowCurrentShot", 1);
+
+				//Player the shutter sound
+				this.GetComponent<AudioSource>().Play();
 			}
 		}
 
@@ -201,9 +211,24 @@ public class TargetCamera : MonoBehaviour
 
 	public void ShowShot(Shot sh)
 	{
+		//Call WhiteOutTargetWindow() and let it handle its own timing
+		StartCoroutine(WhiteOutTargetWindow());
+
 		//Position the TargetCamera with the Shot
 		transform.position = sh.position;
 		transform.rotation = sh.rotation;
+	}
+
+	public void ShowCurrentShot()
+	{
+		ShowShot(Shot.shots[shotNum]);
+	}
+
+	public IEnumerator WhiteOutTargetWindow()
+	{
+		whiteOut.SetActive(true);
+		yield return new WaitForSeconds(0.05f);
+		whiteOut.SetActive(false);
 	}
 
 	//OnDrawGizmos() is called ANY time Gizmos need to be drawn, even when Unity isn't playing
