@@ -10,6 +10,7 @@ This is a variation of the first-person-shooter genre (FPS). In it, there is no 
 - Right click to replace the current target shot
 - Q and E to cycle through picture shots
 - Hold right click to instant-compare current shot with potential replacement shot, which occurs when you let right-click go!
+- Left Shit + S to save your target shots!
 
 ###Play mode
 - Mouse to look
