@@ -2,6 +2,8 @@
 
 This is a variation of the first-person-shooter genre (FPS). In it, there is no violence; instead, you take "shots" with a camera. Your mission is to find all the interesting objects presented and take their pictures in the scene. Example image of gameplay:
 
+![alt tag](https://github.com/mplawley/quick-snap/blob/master/Example.jpg)
+
 #directions
 
 ###Edit mode
