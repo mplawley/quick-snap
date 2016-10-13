@@ -255,8 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8247fb8954aa445fbee3507038fd9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editMode: 1
+  editMode: 0
   fpCamera: {fileID: 1715151697}
+  maxPosDeviation: 1
+  maxTarDeviation: 0.6
+  deviationEasing: ',Out|'
+  passingAccuracy: 0.5
   shotNum: 0
   shotCounter: {fileID: 655079239}
   shotRating: {fileID: 441987935}
@@ -267,6 +271,14 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  lastShot:
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    target: {x: 0, y: 0, z: 0}
+  numShots: 0
+  playerShots: []
+  playerRatings: []
+  checkToDeletePlayerPrefs: 0
 --- !u!1 &655079237
 GameObject:
   m_ObjectHideFlags: 0

@@ -118,4 +118,65 @@ public class Shot //DOES NOT extend MonoBehaviour
 			return xs;
 		}
 	}
+
+	//Delete Shots from Shot.shots and PlayerPrefs
+	public static void DeleteShots()
+	{
+		shots = new List<Shot>();
+		if (PlayerPrefs.HasKey(prefsName))
+		{
+			PlayerPrefs.DeleteKey(prefsName);
+			Utils.tr("PlayerPrefs." + prefsName + " has been deleted.");
+		}
+		else
+		{
+			Utils.tr("There was no PlayerPrefs." + prefsName + " to delete.");
+		}
+	}
+
+	//Replace the shot
+	public static void ReplaceShot(int ndx, Shot sh)
+	{
+		//Make sure there's a Shot at that index to replace
+		if (shots == null || shots.Count <= ndx)
+		{
+			return;
+		}
+
+		//Remove the old Shot
+		shots.RemoveAt(ndx);
+
+		//List<>.Insert() adds something to the list at a specific index
+		shots.Insert(ndx, sh);
+
+		Utils.tr("Replaced shot:", ndx, "with", sh.ToXML());
+	}
+
+	//Compare two Shots. 1 is a perfect match, while < 0 is not valid
+	public static float Compare(Shot target, Shot test)
+	{
+		//Get the positional deviation of both the camera and the Raycast hit
+		float posDev = (test.position - target.position).magnitude;
+		float tarDev = (test.target - target.target).magnitude;
+
+		float posAccPct, tarAccPct, posAP2, tarAP2; //Accuracy percentages
+		TargetCamera tc = TargetCamera.S;
+
+		//Get a value for accuracy where 1 is perfect and 0 is barely ok
+		posAccPct = 1 - (posDev / tc.maxPosDeviation);
+		tarAccPct = 1 - (tarDev / tc.maxTarDeviation);
+
+		//Curve the value so that it's more forgiving. This uses the same easing that we do for motion.
+		//You can curve ANY value between 0 and 1, not just Interpolation values
+		posAP2 = Easing.Ease(posAccPct, tc.deviationEasing);
+		tarAP2 = Easing.Ease(tarAccPct, tc.deviationEasing);
+
+		float accuracy = (posAP2 + tarAP2) / 2f;
+
+		//Remember that you can use Utils to format numbers nicely as strings
+		string accText = Utils.RoundToPlaces(accuracy * 100).ToString() + "%";
+		Utils.tr("Position:", posAccPct, posAP2, "Target:", tarAccPct, tarAP2, "Accuracy", accText);
+
+		return (accuracy);
+	}
 }
