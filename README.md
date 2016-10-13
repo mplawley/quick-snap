@@ -4,6 +4,16 @@ This is a variation of the first-person-shooter genre (FPS). In it, there is no 
 
 ![alt tag](https://github.com/mplawley/quick-snap/blob/master/Example.jpg)
 
+# installation and play
+
+Contac me for a 200MB GitIgnore folder. This prototype has a lot of pretty assets that have to be placed just so. Downloading the asset package from online sources (e.g. Unity, Prototools, etc.) won't do it because I made modifications. 
+
+Once you have the GitIgnore folder, open Unity and start Scene 0.
+
+# motivation
+
+I am going through Jeremy Gibson's <i>Game Design, Prototyping, and Development</i> textbook and building the prototypes he gives the reader to do. This is the seventh and penultimate prototype.
+
 #directions
 
 ###Edit mode
