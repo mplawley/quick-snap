@@ -4,7 +4,11 @@ This is a variation of the first-person-shooter genre (FPS). In it, there is no 
 
 #directions
 
-*** Turn on edit mode (located on the Target Camera script on the Target Camera) to set the target shots with a left click of the mouse button. These become the new shots the player must find
+*** Turn on edit mode (located on the Target Camera script on the Target Camera) to enter level-design mode. While in edito mod:
+- Set a target shot with a left click of the mouse button. These target shots are the new shots the player must find
+- Right click to replace the current target shot
+- Q and E to cycle through picture shots
+- Hold right click to instant-compare current shot with potential replacement shot, which occurs when you let right-click go!
 
 - Mouse to look
 - WASD to walk around.
