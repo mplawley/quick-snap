@@ -13,6 +13,7 @@ This is a variation of the first-person-shooter genre (FPS). In it, there is no 
 - Left Shit + S to save your target shots!
 
 ###Play mode
+- Be sure to turn off edit mode in order to play as a player.
 - Mouse to look
 - WASD to walk around.
 - Hold left-shift to run.
